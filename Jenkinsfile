@@ -14,20 +14,20 @@ pipeline {
 
         stage('Verify Node.js') {
             steps {
-                sh 'node -v'
-                sh 'npm -v'
+                bat 'node -v'
+                bat 'npm -v'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
 
         stage('Run App') {
             steps {
-                sh 'nohup node index.js > app.log 2>&1 &'
+                bat 'start /b node index.js > app.log 2>&1'
             }
         }
     }
