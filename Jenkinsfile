@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'NodeJS' // Make sure "NodeJS" is configured in Jenkins under Global Tools
-    }
-
     triggers {
         githubPush()
     }
@@ -13,6 +9,13 @@ pipeline {
         stage('Clone') {
             steps {
                 git url: 'https://github.com/Creatureab/NodeRepoNew.git', branch: 'main'
+            }
+        }
+
+        stage('Verify Node.js') {
+            steps {
+                sh 'node -v'
+                sh 'npm -v'
             }
         }
 
