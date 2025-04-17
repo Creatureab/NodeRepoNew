@@ -27,7 +27,7 @@ pipeline {
 
         stage('Run App') {
             steps {
-                sh 'nohup node server.js > app.log 2>&1 &'
+                sh 'nohup node index.js > app.log 2>&1 &'
             }
         }
     }
