@@ -30,7 +30,7 @@ pipeline {
         stage('Stop Existing App') {
             steps {
                 bat '''
-                    for /f "tokens=5" %%a in ('netstat -a -n -o ^| findstr :8082') do taskkill /F /PID %%a
+                    for /f "tokens=5" %%a in ('netstat -a -n -o ^| findstr :3000') do taskkill /F /PID %%a
                 '''
             }
         }
