@@ -32,8 +32,9 @@ pipeline {
         bat '''
             for /F "tokens=5" %%a in ('netstat -a -n -o ^| findstr :8082') do taskkill /F /PID %%a
         '''
+            }
         }
-    }
+
 
 
         stage('Run App') {
