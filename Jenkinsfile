@@ -12,7 +12,7 @@ pipeline {
             }
         }
 
-        stage('Verify Node.js') {
+        stage('Verify index.js') {
             steps {
                 bat '''
                     node -v
