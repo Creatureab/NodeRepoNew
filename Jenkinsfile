@@ -14,8 +14,10 @@ pipeline {
 
         stage('Verify Node.js') {
             steps {
-                bat 'node -v'
-                bat 'npm -v'
+                bat '''
+                    node -v
+                    npm -v
+                '''
             }
         }
 
@@ -25,9 +27,17 @@ pipeline {
             }
         }
 
+        stage('Stop Existing App') {
+            steps {
+                bat '''
+                    for /f "tokens=5" %%a in ('netstat -a -n -o ^| findstr :8082') do taskkill /F /PID %%a
+                '''
+            }
+        }
+
         stage('Run App') {
             steps {
-                bat 'start /b node index.js > app.log 2>&1'
+                bat 'npm start > app.log 2>&1'
             }
         }
     }
